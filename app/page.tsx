@@ -31,7 +31,7 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ [
           <div className="flex flex-col gap-16 ">
             {
               getFilteredItems.map((category) => {
-                return <ProductGroupList key={category.id} title={category.name} productItems={category.products} categoryId={category.id} />
+                return <ProductGroupList key={category.id} title={category.name} products={category.products} categoryId={category.id} />
               })
             }
           </div>
