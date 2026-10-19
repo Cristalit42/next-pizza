@@ -27,13 +27,13 @@
 - [+] Убрать дубли конфигов: `postcss.config.js` и `postcss.config.mjs` — оставить один.
 - [+] Предупреждение о lockfile: удалить лишний `G:\VS-code\package-lock.json` или задать `turbopack.root` в `next.config.mjs`.
 - [+] `<html lang="ru">` в `app/layout.tsx`.
-- [] Закоммитить текущее состояние и дальше коммитить после каждого пункта.
+- [+] Закоммитить текущее состояние и дальше коммитить после каждого пункта.
 
 ## Этап 1. Главная страница из БД (2–3 дня)
 
-- [] `lib/find-pizzas.ts`: серверная функция, которая читает `searchParams` (`sizes`, `pizzaTypes`, `ingredients`,
+- [+] `lib/find-pizzas.ts`: серверная функция, которая читает `searchParams` (`sizes`, `pizzaTypes`, `ingredients`,
       `priceFrom`, `priceTo`) и делает `prisma.category.findMany({ include: { products: { where: ..., include: { items, ingredients } } } })`.
-- [] `app/page.tsx` — async server component, принимает `searchParams`, вызывает `findPizzas`, рендерит `ProductGroupList`
+- [+] `app/page.tsx` — async server component, принимает `searchParams`, вызывает `findPizzas`, рендерит `ProductGroupList`
       для каждой непустой категории.
 - [] `Categories` получает категории пропсом (из БД), а не из массива `cats`; скрывать пустые категории.
 - [] `ProductCard`: реальное описание из ингредиентов, цена «от» = минимальная цена вариантов.

@@ -10,7 +10,7 @@ import { useCategoryStore } from "@/store/category";
 
 interface Props {
   title: string;
-  items: any[];
+  productItems: any[];
   className?: string;
   listClassName?: string;
   categoryId: number;
@@ -18,7 +18,7 @@ interface Props {
 
 export const ProductGroupList: React.FC<Props> = ({
   title,
-  items,
+  productItems,
   className,
   listClassName,
   categoryId
@@ -35,22 +35,21 @@ export const ProductGroupList: React.FC<Props> = ({
     }
   }, [categoryId, intersection?.isIntersecting, title])
 
-  return (
-
+  return (productItems.length !== 0 &&
 
     <div className={className} id={title} ref={intersectionRef}>
 
       <Title text={title} size="md" className="font-extrabold mb-5" />
 
       <div className={cn('grid grid-cols-3 gap-[50px]', listClassName)}>
-        {items
-          .map((item, i) => (
+        {productItems
+          .map((products, i) => (
             <ProductCard
               key={i}
-              id={item.id}
-              name={item.name}
-              imageUrl={item.imageUrl}
-              price={item.items[0].price}
+              id={products.id}
+              name={products.name}
+              imageUrl={products.imageUrl}
+              price={products.productItems[0].price}
             />
           ))
         }
