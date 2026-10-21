@@ -35,7 +35,7 @@
       `priceFrom`, `priceTo`) и делает `prisma.category.findMany({ include: { products: { where: ..., include: { items, ingredients } } } })`.
 - [+] `app/page.tsx` — async server component, принимает `searchParams`, вызывает `findPizzas`, рендерит `ProductGroupList`
       для каждой непустой категории.
-- [] `Categories` получает категории пропсом (из БД), а не из массива `cats`; скрывать пустые категории.
+- [+] `Categories` получает категории пропсом (из БД), а не из массива `cats`; скрывать пустые категории.
 - [] `ProductCard`: реальное описание из ингредиентов, цена «от» = минимальная цена вариантов.
 - [] `SortPopup`: рабочая сортировка (популярное / цена ↑ / цена ↓) через `?sortBy=`.
 - [] Хук `useQueryFilters` / `useFilters` — вынести логику из `Filters`, чтобы компонент стал чище.

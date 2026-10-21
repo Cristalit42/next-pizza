@@ -7,13 +7,15 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ [
 
   const getFilteredItems = await findPizzas(getSearchParams)
 
+  const topBarCategories = getFilteredItems.filter((category) => category.products.length !== 0).map(({ id, name }) => ({ id, name }))
+
   return <>
 
     <Container>
       <Title text="Все пиццы" size="lg" className="font-extrabold mt-10" />
 
     </Container>
-    <TopBar />
+    <TopBar categories={topBarCategories} />
 
 
     <Container className="pb-14 mt-10">
