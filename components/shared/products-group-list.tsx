@@ -16,6 +16,8 @@ interface Props {
   categoryId: number;
 }
 
+
+
 export const ProductGroupList: React.FC<Props> = ({
   title,
   products,
@@ -35,6 +37,7 @@ export const ProductGroupList: React.FC<Props> = ({
     }
   }, [categoryId, intersection?.isIntersecting, title])
 
+
   return (products.length !== 0 &&
 
     <div className={className} id={title} ref={intersectionRef}>
@@ -49,7 +52,8 @@ export const ProductGroupList: React.FC<Props> = ({
               id={product.id}
               name={product.name}
               imageUrl={product.imageUrl}
-              price={product.productItems[0].price}
+              price={Math.min(...product.productItems.map((productItem: {price: number}) => productItem.price))}
+              ingredients={product.ingredients}
             />
           ))
         }

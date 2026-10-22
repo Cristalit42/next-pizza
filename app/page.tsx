@@ -4,10 +4,9 @@ import findPizzas from "@/lib/find-pizzas";
 
 export default async function Page({ searchParams }: { searchParams: Promise<{ [key: string]: string | undefined }> }) {
   const getSearchParams = (await searchParams);
+  const getFilteredItems = await findPizzas(getSearchParams);
 
-  const getFilteredItems = await findPizzas(getSearchParams)
-
-  const topBarCategories = getFilteredItems.filter((category) => category.products.length !== 0).map(({ id, name }) => ({ id, name }))
+  const topBarCategories = getFilteredItems.filter((category) => category.products.length !== 0).map(({ id, name }) => ({ id, name }));
 
   return <>
 

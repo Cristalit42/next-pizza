@@ -3,6 +3,7 @@ import React from "react";
 import { Title } from "./title";
 import { Button } from "../ui";
 import { Plus } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface Props {
   id: number;
@@ -10,11 +11,15 @@ interface Props {
   price: number;
   imageUrl: string;
   className?: string;
+  ingredients: { name: string }[]
 }
 
-export const ProductCard: React.FC<Props> = ({ id, name, price, className, imageUrl }) => {
+export const ProductCard: React.FC<Props> = ({ id, name, price, className, imageUrl, ingredients }) => {
+
+  const ingredientsText = ingredients.map((ingredient) => ingredient.name).join(', ')
+
   return (
-    <div className={className}>
+    <div className={cn('flex flex-col gap-1', className)}>
       <Link href={`/product/${id}`}>
         <div className="flex justify-center p-6 bg-secondary rounded-lg h-[260px]">
           <img className="w-[215px] h-[215px]" src={imageUrl} alt={name} />
@@ -23,11 +28,13 @@ export const ProductCard: React.FC<Props> = ({ id, name, price, className, image
 
       <Title text={name} size="sm" className="mb-1 mt-3 font-bold" />
 
-      <p className="text-sm text-gray-400">
-        Острая чоризо, острый перец халапеньо, соус барбекю, митболы, томаты, сладкий перец, красный лук, моцарелла
-      </p>
+      {ingredientsText &&
+        <p className="text-sm text-gray-400">
+          {ingredientsText}
+        </p>
+      }
 
-      <div className="flex items-center justify-between mt-4">
+      <div className="flex items-center justify-between mt-auto">
         <span className="text-[20px]">
           от <b>{price} ₽</b>
         </span>
