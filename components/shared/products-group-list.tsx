@@ -7,6 +7,7 @@ import { Title } from "./title";
 import { cn } from "@/lib/utils";
 import { ProductCard } from "./product-card";
 import { useCategoryStore } from "@/store/category";
+import { getMinPrice } from "@/lib/get-min-price";
 
 interface Props {
   title: string;
@@ -52,7 +53,7 @@ export const ProductGroupList: React.FC<Props> = ({
               id={product.id}
               name={product.name}
               imageUrl={product.imageUrl}
-              price={Math.min(...product.productItems.map((productItem: {price: number}) => productItem.price))}
+              price={getMinPrice(product)}
               ingredients={product.ingredients}
             />
           ))

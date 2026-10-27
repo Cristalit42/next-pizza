@@ -21,6 +21,7 @@ interface QueryFilters extends PriceProps {
   pizzaTypes: string;
   sizes: string;
   ingredients: string;
+  sortBy: string;
 }
 
 export const Filters: React.FC<Props> = ({ className }) => {
@@ -58,6 +59,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
       pizzaTypes: Array.from(pizzaTypes),
       sizes: Array.from(sizes),
       ingredients: Array.from(selectedIngredients),
+      sortBy: searchParams.get('sortBy') || undefined,
     };
 
     const query = qs.stringify(filters, {

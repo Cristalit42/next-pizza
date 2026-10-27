@@ -1,3 +1,4 @@
+import { getMinPrice } from "./get-min-price";
 import { prisma } from "./prisma"
 
 export default async function findPizzas(searchParams: { [key: string]: string | undefined }) {
@@ -8,7 +9,7 @@ export default async function findPizzas(searchParams: { [key: string]: string |
   const priceFrom = Number(searchParams.priceFrom) || 0;
   const priceTo = Number(searchParams.priceTo) || 1000;
 
-  return prisma.category.findMany({
+  const categories = await prisma.category.findMany({
     include: {
       products: {
         where: {
@@ -27,5 +28,21 @@ export default async function findPizzas(searchParams: { [key: string]: string |
       }
     }
   })
+
+  switch (searchParams.sortBy) {
+    case 'price_asc':
+      categories.forEach((category) => {
+        category.products.sort((a, b) => (getMinPrice(a) - getMinPrice(b)))
+      })
+      break;
+    case 'price_desc':
+      categories.forEach((category) => {
+        category.products.sort((a, b) => (getMinPrice(b) - getMinPrice(a)))
+      })
+      break;
+
+  }
+
+  return categories
 }
 
