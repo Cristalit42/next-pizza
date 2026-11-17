@@ -7,6 +7,7 @@ import { Search } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect } from "react";
 import { useClickAway, useDebounce } from "react-use";
+import Image from "next/image";
 
 interface Props {
   className?: string;
@@ -71,8 +72,10 @@ export const SearchInput: React.FC<Props> = ({ className }) => {
             key={product.id}
             className="flex items-center gap-4 px-3 py-2 hover:bg-primary/10"
             href={`/product/${product.id}`}>
-            <img
+            <Image
               className="rounded-sm w-[32px]"
+              width={32}
+              height={32}
               src={product.imageUrl}
               alt={product.name} />
             <div>
