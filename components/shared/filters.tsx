@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Title, RangeSlider, CheckboxFiltersGroup } from "@/components/shared";
-import { Input } from "../ui";
+import { Button, Input } from "../ui";
 import { useFilterIngredients } from "@/hooks/useFilterIngredients";
 import { useFilters } from "@/hooks/useFilters";
 import { useQueryFilters } from "@/hooks/useQueryFilters";
@@ -19,7 +19,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
 
   const filters = useFilters();
   useQueryFilters(filters);
-  const { prices, pizzaTypes, sizes, selectedIngredients, toggleSizes, togglePizzaTypes, toggleIngredients, updatePrice, setPrice } = filters
+  const { prices, pizzaTypes, sizes, selectedIngredients, toggleSizes, togglePizzaTypes, toggleIngredients, updatePrice, setPrice, resetFilters } = filters
 
   return (
     <div className={className}>
@@ -86,6 +86,10 @@ export const Filters: React.FC<Props> = ({ className }) => {
         selected={selectedIngredients}
         name="ingredients"
       />
+
+      <Button onClick={resetFilters} className="w-full mt-5">
+        Сбросить фильтры
+      </Button>
     </div>
   );
 };

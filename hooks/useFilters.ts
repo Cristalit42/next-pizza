@@ -19,13 +19,13 @@ interface QueryFilters extends PriceProps {
 export const useFilters = () => {
   const searchParams = useSearchParams() as unknown as Map<keyof QueryFilters, string>;
 
-  const [sizes, { toggle: toggleSizes }] = useSet(
+  const [sizes, { toggle: toggleSizes, clear: clearSizes }] = useSet(
     new Set<string>(searchParams.has('sizes') ? searchParams.get('sizes')?.split(',') : [])
   );
-  const [pizzaTypes, { toggle: togglePizzaTypes }] = useSet(
+  const [pizzaTypes, { toggle: togglePizzaTypes, clear: clearPizzaTypes }] = useSet(
     new Set<string>(searchParams.has('pizzaTypes') ? searchParams.get('pizzaTypes')?.split(',') : [])
   );
-  const [selectedIngredients, { toggle: toggleIngredients }] = useSet(
+  const [selectedIngredients, { toggle: toggleIngredients, clear: clearSelectedIngredients }] = useSet(
     new Set<string>(searchParams.has('ingredients') ? searchParams.get('ingredients')?.split(',') : [])
   );
 
@@ -35,6 +35,15 @@ export const useFilters = () => {
     priceTo: Number(searchParams.get('priceTo')) || undefined,
   })
 
+  const resetFilters = () => {
+    clearSizes();
+    clearPizzaTypes();
+    clearSelectedIngredients();
+    setPrice({
+      priceFrom: undefined,
+      priceTo: undefined
+    })
+  }
 
   const updatePrice = (name: keyof PriceProps, value: number) => {
     setPrice({
@@ -44,7 +53,7 @@ export const useFilters = () => {
   }
 
   return {
-    prices, pizzaTypes, sizes, selectedIngredients, toggleSizes, togglePizzaTypes, toggleIngredients, updatePrice, setPrice
+    prices, pizzaTypes, sizes, selectedIngredients, toggleSizes, togglePizzaTypes, toggleIngredients, updatePrice, setPrice, resetFilters
   }
 
 }
