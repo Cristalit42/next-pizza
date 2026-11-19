@@ -12,11 +12,7 @@ const nunito = Nunito({
   weight: ['400', '500', '600', '700', '800', '900'],
 });
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export default function RootLayout({ children, modal }: Readonly<{ children: React.ReactNode; modal: React.ReactNode }>) {
   return (
     <html
       lang="ru"
@@ -27,6 +23,7 @@ export default function RootLayout({
         <Header />
         <main className="min-h-screen">
           {children}
+          {modal}
         </main>
       </body>
     </html>

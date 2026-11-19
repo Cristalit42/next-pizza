@@ -10,4 +10,7 @@ export { RangeSlider } from "./range-slider";
 export { CheckboxFiltersGroup } from "./checkbox-filters-group";
 export { SearchInput } from "./search-input";
 export { ProductCardSkeleton } from "./product-card-skeleton";
+export { ChooseProductModal } from "./choose-product-modal";
 
+export { GroupVariants } from "./group-variants";
+export { ChooseProductModalSkeleton } from "./choose-product-modal-skeleton";
