@@ -44,7 +44,7 @@
 
 ## Этап 2. Карточка товара и выбор пиццы (2–3 дня)
 
-- [] `app/product/[id]/page.tsx`: загрузка товара с `items` и `ingredients`, `notFound()` если нет.
+- [+] `app/product/[id]/page.tsx`: загрузка товара с `items` и `ingredients`, `notFound()` если нет.
 - [] Модалка товара поверх главной через intercepting routes: `app/@modal/(.)product/[id]/page.tsx` + `app/@modal/default.tsx`.
 - [] Компоненты: `PizzaImage` (картинка меняет размер), `GroupVariants` (размер 20/30/40, тесто тонкое/традиционное),
       `IngredientItem` (выбор добавок), `ChooseProductForm` (не-пицца), `ChoosePizzaForm`.

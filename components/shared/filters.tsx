@@ -6,6 +6,7 @@ import { Button, Input } from "../ui";
 import { useFilterIngredients } from "@/hooks/useFilterIngredients";
 import { useFilters } from "@/hooks/useFilters";
 import { useQueryFilters } from "@/hooks/useQueryFilters";
+import { pizzaSizesConstants, pizzaTypesConstants } from "@/lib/pizza-constants";
 
 interface Props {
   className?: string;
@@ -31,10 +32,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
         className="mb-5"
         onClickCheckbox={togglePizzaTypes}
         selected={pizzaTypes}
-        items={[
-          { text: 'Тонкое', value: '1' },
-          { text: 'Традиционное', value: '2' },
-        ]}
+        items={pizzaTypesConstants}
         name={"pizzaTypes"} />
 
 
@@ -43,11 +41,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
         className="mb-5"
         onClickCheckbox={toggleSizes}
         selected={sizes}
-        items={[
-          { text: '20cm', value: '20' },
-          { text: '30cm', value: '30' },
-          { text: '40cm', value: '40' },
-        ]}
+        items={pizzaSizesConstants}
         name={"sizes"} />
 
       <div className="mt-5 border-y border-y-neutral-100 py-6 pb-7">
